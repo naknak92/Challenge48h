@@ -1,5 +1,15 @@
+<<<<<<< HEAD:pages/profile.php
 <link rel="stylesheet" href="css/Profil.css">
 
+=======
+<link rel="stylesheet" href="/assets/css/Profil.css">
+<title>SQUAD</title>
+<link
+  rel="icon"
+  href="/assets/img/logo.png"
+  sizes="16x16"
+/>
+>>>>>>> 8e66c75bd03ba1d0e34c804a06f7771b45daa4de:template/Profil.html
 <div class="card-container">
 	<span class="pro">PRO</span>
 	<img class="round" src="https://img1.freepng.fr/20180714/ggq/kisspng-user-profile-computer-icons-login-clip-art-profile-picture-icon-5b49de2f1ef441.4301202215315676631268.jpg" alt="user" />
