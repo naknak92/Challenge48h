@@ -4,6 +4,9 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+*:not(i){
   font-family: "Poppins", sans-serif !important;
 }
 
@@ -55,7 +58,7 @@ html, body{
   list-style: none;
 }
 
-.navbar .nav-container a {
+.navbar .nav-container a:not(.chip>a) {
   text-decoration: none;
   color: white;
   font-weight: 500;
@@ -153,6 +156,8 @@ html, body{
   color: #FFFFFF;
   opacity: 1;
   transition: all 0.5s ease;
+  display: flex;
+  align-items: center;
 }
 
 .nav-container input[type="checkbox"]:checked ~ .menu-items {

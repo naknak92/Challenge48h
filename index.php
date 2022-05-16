@@ -6,8 +6,16 @@
         return sha1(md5($str));
     }
 
-    $unloggedPages = ["home.php", "login.php", "register.php"];
-    $loggedPages = ["home.php"]+array_diff(scandir("pages"), $unloggedPages);
+    $sha = function($value) {
+        return sha1($value+1);
+    };    
+
+    $unloggedPages = ["home.php", "search.php", "login.php", "register.php"];
+    $loggedPages = ["home.php", "search.php"]+array_diff(scandir("pages"), $unloggedPages);
+
+    if(!empty($_COOKIE["idlogin"])){
+        $user = $users[array_search($_COOKIE["idlogin"], array_map($sha, array_keys($users)))];
+    }
 
 ?>
 
@@ -17,6 +25,7 @@
     <link rel="stylesheet" href="css/grid.css">
     <link rel="stylesheet" href="css/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
