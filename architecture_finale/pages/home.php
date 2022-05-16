@@ -2,13 +2,12 @@
 
 ?>
 
-<?= (empty($_COOKIE["idlogin"])) ? '<a href="?page=login">Connexion</a>' : '<a href="?page=logout">Deconnexion</a>'; ?>
 
 <!DOCTYPE html>
 <html>
 <head>
     <link rel="stylesheet" href="css/grid.css">
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
@@ -25,11 +24,7 @@
             <h1>HOME</h1>
             </div>
             <div class="menu-items">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">about</a></li>
-            <li><a href="#">Mon compte</a></li>
-            <li><a href="#">Connexion</a></li>
-            <li><a href="#">Inscription</a></li>
+                <li><?= (empty($_COOKIE["idlogin"])) ? '<a href="?page=login">Connexion</a>' : '<a href="?page=logout">Deconnexion</a>'; ?></li>
             </div>
         </div>
         </div>
