@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="/assets/css/Profil.css">
+<link rel="stylesheet" href="css/Profil.css">
 
 <div class="card-container">
 	<span class="pro">PRO</span>
@@ -25,4 +25,3 @@
 		</ul>
 	</div>
 </div>
-
