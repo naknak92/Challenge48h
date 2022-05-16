@@ -42,7 +42,7 @@ transition: 0.3s;
 border-radius: 5px; /* 5px rounded corners */
 margin: 10px;
 padding-bottom: 10px;
-opacity: 0.8;
+opacity: 0.9;
 }
 
 /* Add rounded corners to the top left and the top right corner of the image */
@@ -71,7 +71,7 @@ display: grid;
 }
 @media(max-width:1200px){}
 
-.grid .card .chip {
+.chip {
 display: flex;
 padding: 0 25px;
 height: 50px;
@@ -81,12 +81,13 @@ background-color: #f1f1f1;
 margin-top: -25px;
 z-index: 1;
 position:absolute;
+font-size: small;
 }
 
-.grid .card .chip img {
+.chip img {
 float: left;
 margin: 0 10px 0 -25px;
 height: 50px;
 width: 50px;
-border-radius: 50%;
+border-radius: 50% !important;
 }

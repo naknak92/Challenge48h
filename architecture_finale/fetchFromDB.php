@@ -22,7 +22,11 @@ while($row = $result->fetch_assoc()){
 $query = "SELECT * FROM `events`";
 $result = $mysqli->query($query);
 while($row = $result->fetch_assoc()){
-    $events[] = $row;
+    if($row["termine"] == 0){
+        $date = date_create($row["datedeb"].$row["deb"]);
+        $events[date_format($date, 'U')][$row["idevent"]] = $row;
+    }
 }
+
 
 ?>
