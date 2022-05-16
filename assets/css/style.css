@@ -7,6 +7,10 @@
   font-family: "Poppins", sans-serif !important;
 }
 
+body{
+  background: linear-gradient(#141e30, #243b55);
+}
+
 .container {
   max-width: 1050px;
   width: 90%;
@@ -81,7 +85,7 @@
   height: 4px;
   width: 100%;
   border-radius: 10px;
-  background: #0e2431;
+  background: #FFFFFF;
 }
 
 .nav-container .hamburger-lines .line1 {
@@ -128,7 +132,7 @@
   top: 5px;
   right: 15px;
   font-size: 1.2rem;
-  color: #0e2431;
+  color: #FFFFFF;
   opacity: 1;
   transition: all 0.5s ease;
 }
