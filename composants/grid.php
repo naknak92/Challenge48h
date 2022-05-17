@@ -19,7 +19,7 @@
                 <?= $event["nomsalon"]; ?>
                 <br><small>Lieu : <?= $event["lieu"]; ?></small>
                 <br><small>Début : <?php $date = date_create($event["datedeb"].$event["deb"]); echo date_format($date, 'd/m H:i'); ?> - Pas encore terminé</small>
-                <br><small>Nombre de participants : <?php echo $nRows['0']; ?>
+                <br><small>Nombre de participants : <?php echo $nRows['0']; ?></small>
                <?= (empty($_COOKIE["idlogin"])) ? '<a href="'.$linkA.'"><button>Connexion pour participer</button></a>'
                                                    : '<a href="'.$lien.'"><button>Participer</button></a>'; ?>
             </p>
