@@ -5,7 +5,7 @@ if (!empty($_POST["search"])){
 }
 
 ?>
-<div class="search"><form method="POST"><label><span>Rechercher un salon</span><input type="text" name="search" placeholder="Tapez ici..."></label></form></div>
+<div class="search"><form method="POST"><label><span>Rechercher un salon</span><input type="text" name="search" placeholder="Tapez ici..." value="<?php if (!empty($_GET["query"])){ ?><?= $_GET["query"] ?><?php } ?>"></label></form></div>
 <style>
     div.search{
         padding: 20px;

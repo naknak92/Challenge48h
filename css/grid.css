@@ -74,7 +74,7 @@ border-radius: 5px 5px 0 0;
 
 .chip {
 display: flex;
-padding: 0 25px;
+padding: 0 10px 0 25px;
 height: 40px;
 line-height: 40px;
 border-radius: 25px;
@@ -90,16 +90,24 @@ color: #7F7F7F;
 }
 
 .chip img {
-float: left;
-margin: 0 10px 0 -25px;
-height: 40px;
-width: 40px;
-border-radius: 50% !important;
+    padding: 5px;
+    float: left;
+    margin: 0 10px 0 -25px;
+    height: 40px;
+    width: 40px;
+    border-radius: 50% !important;
 }
 
 .chip a{
     color: #BFBFBF;
-    margin-left: 5px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-size: large;
+}
+
+.chip span, .chip a{
+    margin-right: 7px;
 }
 
 .chip span{
