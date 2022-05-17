@@ -8,7 +8,7 @@ $mysqli->set_charset('utf8mb4');
 $query = "SELECT * FROM `users`";
 $result = $mysqli->query($query);
 while($row = $result->fetch_assoc()){
-    $users[$row["iduser"]] = $row;
+    $users[sha1($row["iduser"])] = $row;
 }
 
 //fetch events
