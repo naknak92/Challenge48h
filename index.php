@@ -10,7 +10,7 @@
         return sha1($value+1);
     };    
 
-    $unloggedPages = ["home.php", "search.php", "login.php", "register.php"];
+    $unloggedPages = ["home.php", "search.php", "login.php", "register.php", "authevent.php"];
     $loggedPages = ["home.php", "search.php"]+array_diff(scandir("pages"), $unloggedPages);
 
     if(!empty($_COOKIE["idlogin"])){
