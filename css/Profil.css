@@ -21,6 +21,7 @@ p {
 .body{
 	display: grid;
 	grid-template-columns: 400px 1fr;
+	align-items: start;
 }
 @media(max-width:700px){
     .body{

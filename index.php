@@ -34,11 +34,12 @@
 
     include 'composants/nav.php';
 
+    if(empty($_COOKIE["idadmin"])){
+        $loggedPages = array_diff($loggedPages, ["admin.php"]);
+        $unloggedPages = array_diff($unloggedPages, ["admin.php"]);
+    }
+
     if(!empty($_COOKIE["idlogin"])){
-        if(empty($_COOKIE["idadmin"])){
-            $loggedPages = $loggedPages-["admin.php"];
-            $unloggedPages = $unloggedPages-["admin.php"];
-        }
         if (empty($_GET["page"]) or !in_array($_GET["page"].".php", $loggedPages)){
             ?><script>window.location.href = "?page=home";</script><?php
         }else{
