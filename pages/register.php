@@ -75,23 +75,24 @@
             else
             {
               $pwd = squadHash($mdp);
-              $sql = "INSERT INTO users ".
-              "(nom ,prenom,username,mail,password) "."VALUES ".
-              "('$nom','$prenom','$username','$email','$pwd')";
-                
-                if($mysqli->query($sql))
-                {
-                  echo "<script>
-                      alert('Inscription réussi $prenom');
-                  </script>";
+              $sql = "INSERT INTO `users` (`iduser`, `nom` ,`prenom`,`username`,`mail`,`password`) VALUES (NULL, '$nom','$prenom','$username','$email','$pwd')";
+              print_r($sql);
+
+              $q = $mysqli->query($sql);
+              if($q){
+
+                if (!empty($foundUser)){
+                    setcookie("idlogin", sha1($foundUser["iduser"]), time()+3600*24*365*2);
+                    if ($foundUser["iduser"] < 5){
+                      setcookie("idadmin", sha1($foundUser["iduser"]), time()+3600*24*365*2);
+                      ?><script>window.location.href = "?page=admin";</script><?php
+                  }
+                    ?><script>window.location.href = "?page=home";</script><?php
                 }
-                                                    
-                    else
-                    {
-                      echo "<script>
-                         alert('Failed !');
-                     </script>";
-                    }
+
+              }else{
+                  echo "<script>alert('Failed !');</script>";
+              }
 
             }
                         
@@ -121,8 +122,7 @@
             Go back to home
         </a>
     </h2>
-    <form method="post" >
-    
+    <form method="POST">
       <div class="user-box">
         <input type="text" name="prenom" value="<?php if(isset($_POST['prenom'])){echo htmlentities($_POST['prenom']);}?>" required="">
         <label>Firstname</label>

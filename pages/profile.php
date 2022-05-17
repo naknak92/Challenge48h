@@ -29,8 +29,8 @@
 		</div>
 	</div>
 	<div class="right">
-		<h1>Salons récents</h1>
-		<div class="grid" style="grid-template-columns:repeat(2,1fr);">
+		<h1 style="margin: 30px;margin-bottom: 0;">Salons récents</h1>
+		<div class="grid" style="grid-template-columns:repeat(2,1fr);padding-top:0">
 			<?php $id = (!empty($_GET["id"])) ? $_GET["id"] : $user["iduser"]; $i = 0; foreach($events as $date){ ?>
 			<?php foreach($date as $event){ ?>
 			<?php if(strpos(strtolower($users[$event["idcreateur"]]["iduser"]), strtolower($id)) !== false){ $i = 1; ?>
