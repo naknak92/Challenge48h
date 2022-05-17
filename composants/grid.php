@@ -1,7 +1,7 @@
 <div class="grid">
 <?php foreach($events as $date){ ?>
 <?php foreach($date as $event){ ?>
-    <?php $lien="?page=event&nomsalon=".$event['nomsalon']."&idevent=".$event['idevent']; ?>
+    <?php $lien="?page=accessevent&idevent=".$event['idevent']; ?>
     <?php $linkA="?page=authevent&idevent=".$event['idevent']; ?>
     <div class="card">
         <img src="<?= 'static/imgs/'.((!empty($event["img"])) ? $event["img"] : 'default.jpg') ?>" alt="" style="width:100%">
