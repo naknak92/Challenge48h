@@ -1,9 +1,3 @@
-<?php
-
-include 'composants/nav.php';
-
-?>
-
 <div class="body container">
     <?php include 'composants/searchProcess.php'; ?>
     <?php if (!empty($_GET["query"])){ ?>
@@ -16,9 +10,9 @@ include 'composants/nav.php';
             <div class="card">
                 <img src="<?= 'static/imgs/'.((!empty($event["img"])) ? $event["img"] : 'default.jpg') ?>" alt="" style="width:100%">
                 <div class="container_">
-                    <div class="chip">
+                    <div class="chip" onclick="this.querySelector('a').click();"><a href="?page=profile&id=<?= $users[$event["idcreateur"]]["iduser"]; ?>"></a>
                         <img class="profile_img" src="<?= 'static/imgs/'.((!empty($users[$event["idcreateur"]-1]["img"])) ? $event["img"] : 'default.jpg') ?>" alt="Person" width="96" height="96">
-                        <span><?= $users[$event["idcreateur"]-1]["username"]; ?></span>
+                        <span><?= $users[$event["idcreateur"]]["username"]; ?></span>
                     </div>
                     <p>
                         <?= $event["nomsalon"] ?>
@@ -41,13 +35,13 @@ include 'composants/nav.php';
         <div class="grid">
         <?php $i = 0; foreach($events as $date){ ?>
         <?php foreach($date as $event){ ?>
-        <?php if(strpos(strtolower($users[$event["idcreateur"]-1]["username"]), strtolower($_GET["query"])) !== false){ $i = 1; ?>
+        <?php if(strpos(strtolower($users[$event["idcreateur"]]["username"]), strtolower($_GET["query"])) !== false){ $i = 1; ?>
             <div class="card">
                 <img src="<?= 'static/imgs/'.((!empty($event["img"])) ? $event["img"] : 'default.jpg') ?>" alt="" style="width:100%">
                 <div class="container_">
-                    <div class="chip">
+                    <div class="chip" onclick="this.querySelector('a').click();"><a href="?page=profile&id=<?= $users[$event["idcreateur"]]["iduser"]; ?>"></a>
                         <img class="profile_img" src="<?= 'static/imgs/'.((!empty($users[$event["idcreateur"]-1]["img"])) ? $event["img"] : 'default.jpg') ?>" alt="Person" width="96" height="96">
-                        <span><?= $users[$event["idcreateur"]-1]["username"]; ?></span>
+                        <span><?= $users[$event["idcreateur"]]["username"]; ?></span>
                     </div>
                     <p>
                         <?= $event["nomsalon"] ?>
@@ -74,9 +68,9 @@ include 'composants/nav.php';
             <div class="card">
                 <img src="<?= 'static/imgs/'.((!empty($event["img"])) ? $event["img"] : 'default.jpg') ?>" alt="" style="width:100%">
                 <div class="container_">
-                    <div class="chip">
+                    <div class="chip" onclick="this.querySelector('a').click();"><a href="?page=profile&id=<?= $users[$event["idcreateur"]]["iduser"]; ?>"></a>
                         <img class="profile_img" src="<?= 'static/imgs/'.((!empty($users[$event["idcreateur"]-1]["img"])) ? $event["img"] : 'default.jpg') ?>" alt="Person" width="96" height="96">
-                        <span><?= $users[$event["idcreateur"]-1]["username"]; ?></span>
+                        <span><?= $users[$event["idcreateur"]]["username"]; ?></span>
                     </div>
                     <p>
                         <?= $event["nomsalon"] ?>

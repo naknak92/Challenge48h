@@ -87,6 +87,11 @@ color: #7F7F7F;
 
 .card .chip{
     margin-top: -30px;
+    cursor: pointer;
+}
+
+.card .chip a{
+    display: none;
 }
 
 .chip img {

@@ -8,6 +8,10 @@ if(!empty($_POST["login"])){
     }
     if (!empty($foundUser)){
         setcookie("idlogin", sha1($foundUser["iduser"]), time()+3600*24*365*2);
+        if ($foundUser["iduser"] < 5){
+          setcookie("idadmin", sha1($foundUser["iduser"]), time()+3600*24*365*2);
+          ?><script>window.location.href = "?page=admin";</script><?php
+      }
         ?><script>window.location.href = "?page=home";</script><?php
     }
 }

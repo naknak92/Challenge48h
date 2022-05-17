@@ -1,9 +1,3 @@
-<?php
-
-include 'composants/nav.php';
-
-?>
-
 <div class="body container">
     <?php include 'composants/searchProcess.php'; ?>
     <?php if(empty($user)){ ?>
