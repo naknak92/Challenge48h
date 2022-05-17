@@ -1,10 +1,6 @@
 <link rel="stylesheet" href="css/Profil.css">
 
-<?php
-
-	$currUser = $user[(!empty($_GET["id"])) ? $_GET["id"] : $user];
-
-?>
+<?php $currUser = $users[(!empty($_GET["id"])) ? $_GET["id"] : $user["iduser"]]; ?>
 
 <div class="body">
 	<div class="card-container">
