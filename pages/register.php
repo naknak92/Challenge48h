@@ -1,5 +1,5 @@
-<?php
-                                
+<?php      
+    
     $requete = "INSERT INTO users (nom ,prenom,username,mail,password) VALUES
                         (:nom ,:prenom,:username,:mail,:password)";
             
@@ -12,7 +12,7 @@
     #Exécution de la requete retournant toutes les personnes de la base !
     $checkusername = $mysqli->query($select);                    
                         
-    $stmt=$mysqli->prepare($requete);
+  //  $stmt=$mysqli->prepare($requete);
     $verifusername=false;
     $verifemail=false;
                         
@@ -27,7 +27,7 @@
         $username = $_POST['username'];
         if(!empty($email) and !empty($mdp) and !empty($nom) and !empty($prenom) and !empty($username) )
         {
-            while($check1 = $checkusername->fetch())
+            while($check1 = $checkusername->fetch_assoc())
             {
                 if($username==$check1['username']) 
                 {
@@ -38,7 +38,7 @@
                                                 
             }
 
-            while($check2 = $checkemail->fetch())
+            while($check2 = $checkemail->fetch_assoc())
             {
                 if($email == $check2['mail'])
                 {
@@ -52,48 +52,45 @@
                                                 
             if($verifusername==true && $verifemail==true )
             {
-                echo "<script>
-                        $('.err_username_email').slideDown('slow');
-                    </script>";
+              echo "<script>
+              alert('Email et username  déjà utilisés, retentez svp !');
+             </script>";
             }
-
             else if($verifusername==true && $verifemail==false)
             {
-                echo "<script>
-                        $('.err_username).slideDown('slow');
-                    </script>";
+              echo "<script>
+                alert('Username déjà utilisé, retenter avec un autre !');
+             </script>";
 
             }
                         
             else if($verifusername==false && $verifemail==true )
             {
-                echo "<script>
-                        $('.err_email').slideDown('slow');
-                    </script>";
+              echo "<script>
+              alert('Email déjà utilisé, retenter avec un autre !');
+             </script>";
 
             }
                                             
             else
             {
-                $stmt->bindParam(':mail', $email);
-                $stmt->bindParam(':password', $mdp);
-                $stmt->bindParam(':nom', $nom);
-                $stmt->bindParam(':prenom', $prenom);
-                $stmt->bindParam(':username', $username);
+              $pwd = squadHash($mdp);
+              $sql = "INSERT INTO users ".
+              "(nom ,prenom,username,mail,password) "."VALUES ".
+              "('$nom','$prenom','$username','$email','$pwd')";
                 
-                if($stmt->execute())
+                if($mysqli->query($sql))
                 {
-                    echo "<script>
-                            $('.yes').slideDown('slow');
-                            window.location.href='home.php';
-                        </script>";
-                    }
+                  echo "<script>
+                      alert('Inscription réussi $prenom');
+                  </script>";
+                }
                                                     
                     else
                     {
-                        echo "<script>
-                                $('.err_execute').slideDown('slow');
-                                </script>";
+                      echo "<script>
+                         alert('Failed !');
+                     </script>";
                     }
 
             }
@@ -103,9 +100,9 @@
         }
         else 
         {
-                echo "<script>
-                        $('.err_empty').slideDown('slow');
-                </script>";
+          echo "<script>
+          alert('Remplissez tous les champs !');
+         </script>";
         }
     }     
                 
@@ -120,28 +117,29 @@
 
 <div class="login-box">
     <h2>Sign Up or
-        <a href="?page=home">
+        <a href="?page=home" style="text-decoration: none; color : blue">
             Go back to home
         </a>
     </h2>
-    <form>
+    <form method="post" >
+    
       <div class="user-box">
-        <input type="password" name="" required="">
+        <input type="text" name="prenom" value="<?php if(isset($_POST['prenom'])){echo htmlentities($_POST['prenom']);}?>" required="">
         <label>Firstname</label>
       </div>
       <div class="user-box">
-        <input type="password" name="" required="">
+        <input type="text" name="nom" value="<?php if(isset($_POST['nom'])){echo htmlentities($_POST['nom']);}?>" required="">
         <label>Name</label>
       </div>
       <div class="user-box">
-        <input type="text" name="" required="">
+        <input type="text" name="username" value="<?php if(isset($_POST['username'])){echo htmlentities($_POST['username']);}?>" required="">
         <label>Username</label>
       </div><div class="user-box">
-        <input type="password" name="" required="">
+        <input type="email" name="mail" value="<?php if(isset($_POST['mail'])){echo htmlentities($_POST['mail']);}?>" required="">
         <label>Email</label>
       </div>
       <div class="user-box">
-        <input type="password" name="" required="">
+        <input type="password" name="password" required="">
         <label>Password</label>
       </div>
       <a href="#" onclick="document.getElementById('submit').click()">
