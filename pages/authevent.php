@@ -11,27 +11,39 @@
         setcookie("idlogin", sha1($foundUser["iduser"]), time()+3600*24*365*2);
         $iduser = $foundUser["iduser"];
         $prenom = $_POST['prenom'];
-        $events_clients = "INSERT INTO eventsclients "."(idsalon,idutilisateur) "."VALUES ".
-                           "('$idevent','$iduser')";
-        if($mysqli->query($events_clients))
-        {
-                             echo "<script>
-                                 alert('Vous pouvez participer a cet évènement maintenant $prenom');
-                             </script>";
-                             ?><script>window.location.href = "?page=home";</script><?php        
+        
+        $query = "SELECT * FROM `eventsclients` WHERE idsalon = ".$_GET['idevent']." AND idutilisateur = '".$foundUser['iduser']."';";
+        $result = $mysqli->query($query);
+        while($row = $result->fetch_assoc()){
+            $deja = $row;
         }
-                                                               
-       else
-        {
-                                 echo "<script>
-                                    alert('Failed !');
-                                </script>";
-        }                   
-
+        if(!isset($deja)){
+          $events_clients = "INSERT INTO eventsclients "."(idsalon,idutilisateur) "."VALUES ".
+                            "('$idevent','$iduser')";
+          if($mysqli->query($events_clients))
+          {
+                              echo "<script>
+                                  alert('Vous pouvez participer a cet évènement maintenant $prenom');
+                              </script>";
+                              ?><script>window.location.href = "?page=home";</script><?php        
+          }
+                                                                
+        else
+          {
+                                  echo "<script>
+                                      alert('Failed !');
+                                  </script>";
+          }                   
+        }else{
+          echo "<script>
+              alert('Vous participez déjà à cet évènement');
+          </script>";
+          ?><script>window.location.href = "?page=home";</script><?php        
+        }
         ?>
         
         
-        <script>window.location.href = "?page=home";</script><?php
+        <script>window.location.href = "?page=accessevent&idevent=<?= $event['idevent'] ?>";</script><?php
     }
 }
 

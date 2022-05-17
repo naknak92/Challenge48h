@@ -1,7 +1,5 @@
 <?php
 
-print_r($events);
-
 $query = "SELECT * FROM `eventsclients` WHERE idsalon = ".$_GET['idevent']." AND idutilisateur = '".$user['iduser']."';";
 $result = $mysqli->query($query);
 while($row = $result->fetch_assoc()){
@@ -15,10 +13,11 @@ if(!isset($deja)){
             alert('Vous pouvez participer a cet évènement maintenant');
         </script>";        
     }
+}
     $query = "SELECT * FROM `events` WHERE idevent = ".$_GET['idevent'].";";
     $result = $mysqli->query($query);
     while($row = $result->fetch_assoc()){
         $event = $row;
+        ?><script>window.location.href = "?page=event&nomsalon=<?= $event['nomsalon'] ?>&idevent=<?= $event['idevent'] ?>";</script><?php
     }
-}
-?><script>window.location.href = "?page=event&nomsalon=<?= $event['nomsalon'] ?>&idevent=<?= $event['idevent'] ?>";</script><?php
+?><script>window.location.href = "?page=home";</script><?php

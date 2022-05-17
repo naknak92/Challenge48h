@@ -6,7 +6,7 @@
     $nRows = $mysqli->query($requete2)->fetch_row(); 
     
     ?>
-    <?php $lien="?page=event&nomsalon=".$event['nomsalon']."&idevent=".$event['idevent']; ?>
+    <?php $lien="?page=accessevent&idevent=".$event['idevent']; ?>
     <?php $linkA="?page=authevent&idevent=".$event['idevent']; ?>
     <div class="card">
         <img src="<?= 'static/imgs/'.((!empty($event["img"])) ? $event["img"] : 'default.jpg') ?>" alt="" style="width:100%">
