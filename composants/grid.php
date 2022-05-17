@@ -1,7 +1,12 @@
 <div class="grid">
 <?php foreach($events as $date){ ?>
-<?php foreach($date as $event){ ?>
-    <?php $lien="?page=accessevent&idevent=".$event['idevent']; ?>
+<?php foreach($date as $event){ 
+    $idevent = $event['idevent'];
+    $requete2 = "SELECT count(*) FROM eventsclients WHERE idsalon = '$idevent';";
+    $nRows = $mysqli->query($requete2)->fetch_row(); 
+    
+    ?>
+    <?php $lien="?page=event&nomsalon=".$event['nomsalon']."&idevent=".$event['idevent']; ?>
     <?php $linkA="?page=authevent&idevent=".$event['idevent']; ?>
     <div class="card">
         <img src="<?= 'static/imgs/'.((!empty($event["img"])) ? $event["img"] : 'default.jpg') ?>" alt="" style="width:100%">
@@ -14,7 +19,8 @@
                 <?= $event["nomsalon"]; ?>
                 <br><small>Lieu : <?= $event["lieu"]; ?></small>
                 <br><small>Début : <?php $date = date_create($event["datedeb"].$event["deb"]); echo date_format($date, 'd/m H:i'); ?> - Pas encore terminé</small>
-                <?= (empty($_COOKIE["idlogin"])) ? '<a href="'.$linkA.'"><button>Connexion pour participer</button></a>'
+                <br><small>Nombre de participants : <?php echo $nRows['0']; ?>
+               <?= (empty($_COOKIE["idlogin"])) ? '<a href="'.$linkA.'"><button>Connexion pour participer</button></a>'
                                                    : '<a href="'.$lien.'"><button>Participer</button></a>'; ?>
             </p>
         </div>
