@@ -53,6 +53,7 @@ border-radius: 5px 5px 0 0;
 .grid{
     display: grid;
     padding: 30px;
+    align-items: start;
 }
 
 @media(min-width:400px){

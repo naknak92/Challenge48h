@@ -6,9 +6,9 @@
     <div class="card">
         <img src="<?= 'static/imgs/'.((!empty($event["img"])) ? $event["img"] : 'default.jpg') ?>" alt="" style="width:100%">
         <div class="container_">
-            <div class="chip" onclick="this.querySelector('a').click();"><a href="?page=profile&id=<?= $users[$event["idcreateur"]]["iduser"]; ?>"></a>
-                <img class="profile_img" src="<?= 'static/imgs/'.((!empty($users[$event["idcreateur"]]["img"])) ? $event["img"] : 'default.jpg') ?>" alt="Person" width="96" height="96">
-                <span><?= $users[$event["idcreateur"]]["username"]; ?></span>
+            <div class="chip" onclick="this.querySelector('a').click();"><a href="?page=profile&id=<?= $users[sha1($event["idcreateur"])]["iduser"]; ?>"></a>
+                <img class="profile_img" src="<?= 'static/imgs/'.((!empty($users[sha1($event["idcreateur"])]["img"])) ? $event["img"] : 'default.jpg') ?>" alt="Person" width="96" height="96">
+                <span><?= $users[sha1($event["idcreateur"])]["username"]; ?></span>
             </div>
             <p>
                 <?= $event["nomsalon"]; ?>

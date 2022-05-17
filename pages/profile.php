@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="css/Profil.css">
 
-<?php $currUser = $users[(!empty($_GET["id"])) ? $_GET["id"] : $user["iduser"]]; ?>
+<?php $currUser = $users[sha1((!empty($_GET["id"])) ? $_GET["id"] : $user["iduser"])]; ?>
 
 <div class="body container">
 	<div class="card-container">
@@ -33,13 +33,13 @@
 		<div class="grid" style="grid-template-columns:repeat(2,1fr);padding-top:0">
 			<?php $id = (!empty($_GET["id"])) ? $_GET["id"] : $user["iduser"]; $i = 0; foreach($events as $date){ ?>
 			<?php foreach($date as $event){ ?>
-			<?php if(strpos(strtolower($users[$event["idcreateur"]]["iduser"]), strtolower($id)) !== false){ $i = 1; ?>
+			<?php if(strpos(strtolower($users[sha1($event["idcreateur"])]["iduser"]), strtolower($id)) !== false){ $i = 1; ?>
 				<div class="card">
 					<img src="<?= 'static/imgs/'.((!empty($event["img"])) ? $event["img"] : 'default.jpg') ?>" alt="" style="width:100%">
 					<div class="container_">
-						<div class="chip" onclick="this.querySelector('a').click();"><a href="?page=profile&id=<?= $users[$event["idcreateur"]]["iduser"]; ?>"></a>
-							<img class="profile_img" src="<?= 'static/imgs/'.((!empty($users[$event["idcreateur"]]["img"])) ? $event["img"] : 'default.jpg') ?>" alt="Person" width="96" height="96">
-							<span><?= $users[$event["idcreateur"]]["username"]; ?></span>
+						<div class="chip" onclick="this.querySelector('a').click();"><a href="?page=profile&id=<?= $users[sha1($event["idcreateur"])]["iduser"]; ?>"></a>
+							<img class="profile_img" src="<?= 'static/imgs/'.((!empty($users[sha1($event["idcreateur"])]["img"])) ? $event["img"] : 'default.jpg') ?>" alt="Person" width="96" height="96">
+							<span><?= $users[sha1($event["idcreateur"])]["username"]; ?></span>
 						</div>
 						<p>
 							<?= $event["nomsalon"] ?>
