@@ -4,6 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  outline: none !important;
 }
 
 *:not(i){
@@ -32,7 +33,7 @@ html, body{
 }
 
 .body{
-  padding-top: 60px;
+  padding-top: 80px;
 }
 
 .navbar {
@@ -58,7 +59,7 @@ html, body{
   list-style: none;
 }
 
-.navbar .nav-container a:not(.chip>a) {
+.navbar .nav-container a:not(.logo a) {
   text-decoration: none;
   color: white;
   font-weight: 500;
@@ -150,7 +151,7 @@ html, body{
 
 .logo {
   position: absolute;
-  top: 5px;
+  height: 100%;
   right: 15px;
   font-size: 1.2rem;
   color: #FFFFFF;

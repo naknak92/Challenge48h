@@ -82,7 +82,7 @@ background-color: #f1f1f1;
 z-index: 1;
 position:absolute;
 font-size: small;
-color: black;
+color: #7F7F7F;
 }
 
 .card .chip{
@@ -95,4 +95,13 @@ margin: 0 10px 0 -25px;
 height: 40px;
 width: 40px;
 border-radius: 50% !important;
+}
+
+.chip a{
+    color: #BFBFBF;
+    margin-left: 5px;
+}
+
+.chip span{
+    padding-right: 5px;
 }
